@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: datagridpv
+  namespace: testdg
+spec:
+  groups:
+  - name: datagridpv-rule
+    rules:
+    - alert: datagridpv 
+      expr: >
+        sum(kubelet_volume_stats_used_bytes{persistentvolumeclaim="data-volume-dgedg2-0"})
+        / sum(kubelet_volume_stats_capacity_bytes{persistentvolumeclaim="data-volume-dgedg2-0"})
+        > 0.01
+      labels:
+        severity: critical
+      annotations:
+        description: datagrid PV disk usage is greater than 80%
