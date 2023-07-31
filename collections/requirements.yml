@@ -1,3 +1,4 @@
+---
 collections:
   - ansible.controller
   - community.general
