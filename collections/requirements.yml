@@ -1,11 +1,11 @@
 ---
 collections:
   - name: ansible.controller
-    source: https://galaxy.ansible.com
+    source: https://galaxy.ansible.com/api/v2/collections/
   - name: community.general
-    source: https://galaxy.ansible.com
+    source: https://galaxy.ansible.com/api/v2/collections/
   - name: kubealex.eda
-    source: https://galaxy.ansible.com
+    source: https://galaxy.ansible.com/api/v2/collections/
 roles:
   - name: role_aap_controller_setup
     src: https://github.com/kubealex/role_aap_controller_setup.git
