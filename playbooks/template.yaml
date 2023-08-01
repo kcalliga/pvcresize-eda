@@ -1,5 +1,5 @@
 ---
-- name: Ansible Playbook for PVC and VolumeSnapshot
+- name: Ansible Playbook for Resizing PVC
   hosts: localhost
   connection: local
   gather_facts: yes
@@ -34,14 +34,14 @@
           ansible.builtin.debug:
             msg: "Status 'Bound' was never achieved for the Persistent Volume Claim {{ ansible_eda.event.resource.metadata.name }}"
 
-    - name: Get VolumeSnapshot details
+    - name: Get PVC Details
       kubernetes.core.k8s_info:
         api_version: snapshot.storage.k8s.io/v1
         kind: VolumeSnapshot
         namespace: "{{ ansible_eda.event.resource.metadata.namespace }}"
       register: volumesnapshot_details
 
-    - name: Debug message for VolumeSnapshot name and namespace
+    - name: Debug message for PVC
       ansible.builtin.debug:
         msg: "Name: {{ item.name }}, Namespace: {{ item.namespace }}"
       loop: "{{ volumesnapshot_details | community.general.json_query('resources[*].metadata') }}"
