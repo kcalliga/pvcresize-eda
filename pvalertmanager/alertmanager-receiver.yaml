@@ -10,4 +10,4 @@ spec:
   receivers:
   - name: default
     webhookConfigs:
-    - url: https://example.org/post
+    - url: https://
