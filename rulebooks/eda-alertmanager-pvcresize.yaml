@@ -10,12 +10,12 @@
 
   rules:
     - name: EDA | AlertManager | Resize PVC
-      condition: event.payload.status == "firing"
+      condition: ansible_eda.event.payload.status == "firing"
       actions:
         - run_job_template:
             name: "Resize PVC"
             organization: Default
             job_args:
               extra_vars:
-                alerts: "{{ event.payload.alerts }}"
-                alertStatus: "{{ event.payload.status }}"
+                alerts: "{{ ansible_eda.event.payload.alerts }}"
+                alertStatus: "{{ ansible_eda.event.payload.status }}"
