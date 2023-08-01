@@ -14,7 +14,7 @@
       actions:
         - run_job_template:
             name: "Resize PVC"
-            organization: pvcresize
+            organization: Default
             job_args:
               extra_vars:
                 alerts: "{{ event.payload.alerts }}"
