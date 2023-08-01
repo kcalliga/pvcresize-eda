@@ -1,5 +1,5 @@
 ---
-- name: EDA | Alertmanager | Example alert resolution
+- name: [EDA] Resize PVC
   hosts: localhost
   tasks:
     - name: Handle new firing alert
