@@ -1,5 +1,5 @@
 ---
-- name: [EDA] Resize PVC
+- name: Resize PVC
   hosts: localhost
   tasks:
     - name: Handle new firing alert
