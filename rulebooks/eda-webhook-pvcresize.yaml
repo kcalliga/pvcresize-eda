@@ -8,16 +8,15 @@
         host: 0.0.0.0
         port: 5000
 
-  rules:
-     - name: EDA | Webhook | Run playbook to greet our webhook callers
-       condition: payload.alerts is defined
-       actions:
-         - run_job_template:
-             name: "[EDA] Webhook playbook"
-             organization: Default
-             job_args:
-               extra_vars:
-                 alerts: "{{ payload.alerts }}"
-         - set_fact:
-             fact:
-               alerts: "{{ payload.alerts }}"
+    - name: EDA | Webhook | Run playbook to greet our webhook callers
+      condition: event.payload.name == 'greeting'
+      actions:
+        - run_job_template:
+            name: "[EDA] Webhook playbook"
+            organization: Default
+            job_args:
+              extra_vars:
+                greeting: "{{ event.payload.message }}"
+        - set_fact:
+            fact:
+              webhookgreeting: "{{ event.payload.message }}"
