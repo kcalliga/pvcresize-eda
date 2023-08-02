@@ -18,4 +18,4 @@
             job_args:
               extra_vars:
                 alerts: "{{ event.payload.alerts }}"
-                alertStatus:"{{ event.payload.status }}"
+                alertStatus: "{{ event.payload.status }}"
