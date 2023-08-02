@@ -8,14 +8,16 @@
         host: 0.0.0.0
         port: 5000
 
-  rules:
-    - name: EDA | AlertManager | Resize PVC
-      condition: event.payload.status == "firing"
+ rules:
+    - name: EDA | Webhook | Run playbook to greet our webhook callers
+      condition: event.payload.name == 'greeting'
       actions:
         - run_job_template:
-            name: "Resize PVC"
+            name: "[EDA] Webhook playbook"
             organization: Default
             job_args:
               extra_vars:
-                alerts: "{{ event.payload.alerts }}"
-                alertStatus: "{{ event.payload.status }}"
+                greeting: "{{ event.payload.message }}"
+        - set_fact:
+            fact:
+              webhookgreeting: "{{ event.payload.message }}"
