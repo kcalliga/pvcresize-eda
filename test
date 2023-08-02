@@ -14,5 +14,5 @@
       action:
         debug:
           msg:
-        - "Message 1 {{ event }}"
-        - Second Message
+          - "Message 1 {{ event }}"
+          - Second Message
