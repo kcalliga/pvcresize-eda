@@ -17,7 +17,7 @@
              organization: Default
              job_args:
                extra_vars:
-                 greeting: "{{ event.payload.message }}"
+                 alerts: "{{ event.payload.message }}"
          - set_fact:
              fact:
                webhookgreeting: "{{ event.payload.message }}"
