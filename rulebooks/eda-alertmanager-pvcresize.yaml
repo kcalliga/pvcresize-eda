@@ -11,7 +11,7 @@
   rules:
     - name: debug with multiple messages
       condition: event.payload is defined
-      action:
+      actions:
         - run_job_template:
             name: "[EDA] Alertmanager playbook"
             organization: Default
