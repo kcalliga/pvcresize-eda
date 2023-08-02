@@ -10,7 +10,7 @@
 
   rules:
     - name: EDA | AlertManager | Resize PVC
-      condition: 'event.payload' is defined
+      condition: event.payload is defined
       actions:
         - debug:
           " Test {{ event }}"
