@@ -10,9 +10,12 @@
 
   rules:
     - name: debug with multiple messages
-      condition: event.payload is defined
+      condition: event.payload.status == "firing"
       action:
-        debug:
-          msg:
-          - "Message 1 {{ event }}"
-          - Second Message
+        - run_job_template:
+            name: "[EDA] Alertmanager playbook"
+            organization: Default
+            job_args:
+              extra_vars:
+                alerts: "{{ event.payload.alerts }}"
+                alertStatus: "{{ event.payload.status }}"
