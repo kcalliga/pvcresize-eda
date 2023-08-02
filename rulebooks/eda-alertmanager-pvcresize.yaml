@@ -10,7 +10,7 @@
 
   rules:
     - name: debug with multiple messages
-      condition: event.payload.alerts == firing
+      condition: event.payload.alerts.status == firing
       action:
         debug:
           msg:
