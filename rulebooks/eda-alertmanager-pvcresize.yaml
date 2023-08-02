@@ -17,5 +17,5 @@
             organization: Default
             job_args:
               extra_vars:
-                alerts: event.payload.alerts
-                alertStatus: event.payload.status
+                alerts: "{{ event.payload.alerts }}"
+                alertStatus:"{{ event.payload.status }}"
