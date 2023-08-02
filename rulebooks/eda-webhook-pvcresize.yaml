@@ -20,4 +20,4 @@
                  alerts: "{{ payload.alerts }}"
          - set_fact:
              fact:
-               webhookgreeting: "{{ payload.alerts }}"
+               alerts: "{{ payload.alerts }}"
