@@ -10,14 +10,14 @@
 
   rules:
      - name: EDA | Webhook | Run playbook to greet our webhook callers
-       condition: event.payload is defined
+       condition: payload.alerts is defined
        actions:
          - run_job_template:
              name: "[EDA] Webhook playbook"
              organization: Default
              job_args:
                extra_vars:
-                 alerts: "{{ event.payload.message }}"
+                 alerts: "{{ payload.alerts }}"
          - set_fact:
              fact:
-               webhookgreeting: "{{ event.payload.message }}"
+               webhookgreeting: "{{ payload.alerts }}"
