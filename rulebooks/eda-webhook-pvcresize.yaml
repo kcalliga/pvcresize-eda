@@ -10,7 +10,7 @@
 
   rules:
      - name: EDA | Webhook | Run playbook to greet our webhook callers
-       condition: event.payload.name == 'greeting'
+       condition: event.payload is defined
        actions:
          - run_job_template:
              name: "[EDA] Webhook playbook"
