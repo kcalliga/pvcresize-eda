@@ -9,9 +9,11 @@
         port: 5001
 
   rules:
-    - name: EDA | AlertManager | Resize PVC
-      condition: event.payload is defined
+    - name: debug with multiple messages
+      condition: event.i >= 5
       action:
-        - debug:
-          " Test {{ event }}"
+        debug:
+          msg:
+        - "Message 1 {{ event }}"
+        - Second Message
 
