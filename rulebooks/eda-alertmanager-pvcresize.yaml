@@ -10,8 +10,10 @@
 
   rules:
     - name: EDA | AlertManager | Resize PVC
-      condition: event.payload.status == "firing"
+      condition: event.payload is defined
       actions:
+        - debug:
+          " Test {{ event }}"
         - run_job_template:
             name: "Resize PVC"
             organization: Default
