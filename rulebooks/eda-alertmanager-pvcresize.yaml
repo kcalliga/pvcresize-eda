@@ -13,7 +13,7 @@
       condition: event.payload is defined
       actions:
         - run_job_template:
-            name: "[EDA] Alertmanager playbook"
+            name: "Resize PVC"
             organization: Default
             job_args:
               extra_vars:
