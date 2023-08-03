@@ -10,7 +10,7 @@
 
   rules:
     - name: debug with multiple messages
-      condition: event.payload is defined
+      condition: event.payload.status == 'firing'
       actions:
         - run_job_template:
             name: "Resize PVC"
