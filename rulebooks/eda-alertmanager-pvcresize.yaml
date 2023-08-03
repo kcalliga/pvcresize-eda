@@ -15,7 +15,3 @@
         - run_job_template:
             name: "Resize PVC"
             organization: Default
-            job_args:
-              extra_vars:
-                alerts: ansible_eda.event.payload.alerts
-                alertStatus: ansible_eda.event.payload.status
