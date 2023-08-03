@@ -11,11 +11,3 @@
               - "The event {{ item.labels.alertName }} just triggered on {{ item.labels.alertTargetHosts }}"
               - "Alert body is: {{ item.labels.alertMessage }}"
 
-        - name: Remediating issue to resolve the alert
-          ansible.builtin.debug:
-            msg: Trying to solve {{ item.labels.alertName }}
-
-    - name: Notify resolution
-      ansible.builtin.debug:
-        msg: "The event {{ item.labels.alertName }} was just resolved by Ansible Event Driven!"
-      when: alertStatus == "resolved"
