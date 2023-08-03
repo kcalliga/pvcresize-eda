@@ -17,5 +17,5 @@
             organization: Default
             job_args:
               extra_vars:
-                alerts: "{{ ansible.eda.alertmanager.event.payload.alerts }}"
-                alertStatus: "{{ ansible.eda.alertmanager.event.payload.status }}"
+                alerts: "{{ ansible_eda.event.payload.alerts }}"
+                alertStatus: "{{ ansible_eda.event.payload.status }}"
