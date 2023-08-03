@@ -1,0 +1,13 @@
+---
+- name: EDA | Alertmanager | Playbook reacting to AlertManager Event with ITSM ticket
+  hosts: localhost
+  tasks:
+    - name: Handle new firing alert
+      when: alertStatus == "firing"
+      block:
+        - name: Debug message
+          ansible.builtin.debug:
+            msg:
+              - "The event {{ item.labels.alertName }} just triggered on {{ item.labels.alertTargetHosts }}"
+              - "Alert body is: {{ item.labels.alertMessage }}"
+          loop: "{{ ansible_eda.event.payload.alerts }}"
