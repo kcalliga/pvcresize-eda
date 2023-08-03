@@ -3,7 +3,7 @@
   hosts: localhost
   tasks:
     - name: Handle new firing alert
-      when: payload.event.alertStatus == "firing"
+      when: "{{ alertStatus }}" == "firing"
       block:
         - name: Debug message
           ansible.builtin.debug:
