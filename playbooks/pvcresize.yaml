@@ -1,13 +1,24 @@
 ---
-- name: Resize PVC
+- name: EDA | Alertmanager | Example alert resolution
   hosts: localhost
   tasks:
     - name: Handle new firing alert
-      when: alertStatus == 'firing'
+      when: alertStatus == "firing"
       block:
         - name: Debug message
           ansible.builtin.debug:
             msg:
               - "The event {{ item.labels.alertName }} just triggered on {{ item.labels.alertTargetHosts }}"
               - "Alert body is: {{ item.labels.alertMessage }}"
+          loop: "{{ alerts }}"
 
+        - name: Remediating issue to resolve the alert
+          ansible.builtin.debug:
+            msg: Trying to solve {{ item.labels.alertName }}
+          loop: "{{ alerts }}"
+
+    - name: Notify resolution
+      ansible.builtin.debug:
+        msg: "The event {{ item.labels.alertName }} was just resolved by Ansible Event Driven!"
+      loop: "{{ alerts }}"
+      when: alertStatus == "resolved"
