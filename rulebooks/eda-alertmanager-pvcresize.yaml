@@ -19,3 +19,4 @@
               extra_vars:
                 alerts: "{{ event.payload.alerts }}"
                 alertStatus: "{{ event.payload.status }}"
+                alertMessage: "{{ event.payload.alerts.labels.alertname }}"
