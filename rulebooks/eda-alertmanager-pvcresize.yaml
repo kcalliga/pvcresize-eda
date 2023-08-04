@@ -9,13 +9,13 @@
         port: 5001
 
   rules:
-    - name: debug with multiple messages
-      condition: event.payload.status == 'firing'
+    - name: EDA | AlertManager | Run playbook to handle alerts
+      condition: event.payload.status == "firing"
       actions:
         - run_job_template:
             name: "Resize PVC"
             organization: Default
             job_args:
               extra_vars:
-                alerts: event.payload.alerts
-                alertStatus: event.payload.status
+                alerts: "{{ event.payload.alerts }}"
+                alertStatus: "{{ event.payload.status }}"
