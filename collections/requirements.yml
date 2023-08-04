@@ -5,3 +5,4 @@ collections:
 - name: containers.podman
 - name: sabre1041.eda
 - name: community.crypto
+- name: kubealex.eda
