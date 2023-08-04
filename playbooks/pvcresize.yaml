@@ -10,12 +10,12 @@
             msg:
               - "The event {{ item.labels.alertName }} just triggered on {{ item.labels.alertTargetHosts }}"
               - "Alert body is: {{ item.labels.alertMessage }}"
-          loop: "{{ ansible_eda.event.payload.alerts }}"
+          loop: "{{ alerts }}"
 
         - name: Remediating issue to resolve the alert
           ansible.builtin.debug:
             msg: Trying to solve {{ item.labels.alertName }}
-          loop: "{{ ansible_eda.event.payload.alerts }}"
+          loop: "{{ alerts }}"
 
     - name: Notify resolution
       ansible.builtin.debug:
