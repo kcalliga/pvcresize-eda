@@ -8,7 +8,7 @@
         - name: Debug message
           ansible.builtin.debug:
             msg:
-              - "The event {{ item.labels.alertname }} just triggered"
+              - "The event {{ alerts.labels.alertname }} just triggered"
 
         - name: Remediating issue to resolve the alert
           ansible.builtin.debug:
