@@ -11,11 +11,12 @@
   rules:
     - name: EDA | AlertManager | Run playbook to handle alerts
       condition: event.payload.status == "firing"
-      action:
-        run_job_template:
-          name: Resize PVC
-          organization: Default
-          job_args:
-            extra_vars:
-              alerts: "{{ event.payload.alerts }}"
-              alertStatus: "{{ event.payload.status }}"
+      actions:
+        - run_job_template:
+            name: "Resize PVC"
+            organization: Default
+            set_facts: true
+            job_args:
+              extra_vars:
+                alerts: "{{ event.payload.alerts[] }}"
+                alertStatus: "{{ event.payload.status }}"
