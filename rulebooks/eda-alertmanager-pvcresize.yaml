@@ -13,9 +13,9 @@
       condition: event.payload.status == "firing"
       action:
         run_job_template:
-          name: "Resize PVC"
+          name: Resize PVC
           organization: Default
           job_args:
             extra_vars:
-              alerts: "{{ event.payload.alerts[] }}"
+              alerts: "{{ event.payload.alerts }}"
               alertStatus: "{{ event.payload.status }}"
