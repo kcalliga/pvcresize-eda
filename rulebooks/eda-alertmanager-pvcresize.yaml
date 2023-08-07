@@ -18,4 +18,5 @@
             job_args:
               extra_vars:
                 alerts: "{{ event.payload.alerts[] }}"
+                alerts_summary: "{{ event.payload.alerts[].annotations.summary }}"
                 alertStatus: "{{ event.payload.status }}"
