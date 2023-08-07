@@ -9,7 +9,7 @@
         port: 5001
 
   rules:
-    - name: EDA | AlertManager | Run playbook to handle alerts
+    - name: EDA-AlertManager-Run playbook to handle alerts
       condition: event.payload.status == "firing"
       actions:
         - run_job_template:
