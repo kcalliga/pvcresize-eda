@@ -8,17 +8,13 @@
         - name: Debug message
           ansible.builtin.debug:
             msg:
-              - "The event {{ item.labels.alertName }} just triggered on {{ item.labels.alertTargetHosts }}"
-              - "Alert body is: {{ item.labels.alertMessage }}"
-          loop: "{{ alerts }}"
+              - "The event {{ item.labels.alertname }} just triggered"
 
         - name: Remediating issue to resolve the alert
           ansible.builtin.debug:
-            msg: Trying to solve {{ item.labels.alertName }}
-          loop: "{{ alerts }}"
+            msg: Trying to solve {{ alerts.labels.alertname }}
 
     - name: Notify resolution
       ansible.builtin.debug:
-        msg: "The event {{ item.labels.alertName }} was just resolved by Ansible Event Driven!"
-      loop: "{{ ansible_eda.event.payload.alerts }}"
+        msg: "The event {{ alerts.labels.alertname }} was just resolved by Ansible Event Driven!"
       when: alertStatus == "resolved"
